@@ -6,7 +6,7 @@ An enterprise-grade simulation of a modern Security Operations Center (SOC) engi
 
 ## 🏗️ Phase 1: Virtual Infrastructure & Base Environment Deployment
 
-The foundation of this automated SOC lab consists of a hybrid virtual environment designed to host the target endpoint, the SIEM analytics engine, and the automation framework. To ensure system stability on a 16 GB host machine, memory allocations were strictly optimized to prevent resource contention.
+The foundation of this automated SOC lab consists of a hybrid virtual environment designed to host the attack platform, target endpoint, SIEM analytics engine, and the automation framework. To ensure system stability on a 16 GB host machine, memory allocations were strictly optimized to prevent resource contention.
 
 ### 💻 Infrastructure Architecture & Resource Matrix
 
@@ -14,7 +14,8 @@ The foundation of this automated SOC lab consists of a hybrid virtual environmen
 | :--- | :--- | :--- | :--- | :--- |
 | **Windows 11 Target** | Windows 11 Enterprise | VMware Workstation | 4.0 GB | Victim Endpoint / Telemetry Log Source |
 | **Splunk Enterprise** | Ubuntu Server 24.04 LTS | Native Instance | 4.0 GB | Centralized SIEM / Log Ingestion Engine |
-| **n8n Automation** | Ubuntu Server 24.04 LTS | Node.js / Docker | 2.0 GB | Advanced SOAR / Incident Orchestrator |
+| **n8n Automation** | Ubuntu Server 24.04 LTS | Node.js / Docker | 1.5 GB | Advanced SOAR / Incident Orchestrator |
+| **Attack Box** | Kali Linux | VMware Workstation | 2.0 GB | Adversary Emulation / Attack Generation |
 
 ---
 
