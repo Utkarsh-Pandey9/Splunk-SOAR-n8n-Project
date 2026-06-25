@@ -34,3 +34,19 @@ To validate successful deployment and underlying network availability across the
 #### 3. Remote Host Management (SSH Connection)
 * **Verification:** Active Secure Shell (SSH) connection established from the host system terminal directly into the Linux backend environment (`utkarsh@192.168.80.134`). This confirms full cross-platform access and network routing between the host machine and the virtual hypervisor tier.
 ![Host Terminal SSH Session](assets/03-ssh-remote-management.png)
+
+---
+
+## 🏗️ Phase 2: Splunk Enterprise Core Configuration & Log Ingestion Pipeline
+
+Day 2 shifted focus toward establishing the centralized SIEM logging backbone, dynamically managing host storage infrastructure to bypass enterprise-grade security blocks, and mapping an active ingestion pipeline from the target endpoint.
+
+### 🔍 Advanced Storage Management & CLI Configurations
+
+During deployment, the Splunk indexing daemon halted search processes due to an automated safety threshold block requiring a minimum of 5GB of free space on the primary storage tier. To maintain infrastructure health on the local machine, a dynamic filesystem upgrade was executed live:
+
+1. **Virtual Hardware Scaling:** Modified hypervisor settings to expand the provisioned storage allocation from **30 GB to 60 GB**.
+2. **LVM Configuration:** Rescanned the physical block layer and extended the logical container natively:
+   ```bash
+   sudo pvresize /dev/sda
+   sudo lvextend -l +100%FREE /dev/ubuntu-vg/ubuntu-lv
