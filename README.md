@@ -50,3 +50,8 @@ During deployment, the Splunk indexing daemon halted search processes due to an 
    ```bash
    sudo pvresize /dev/sda
    sudo lvextend -l +100%FREE /dev/ubuntu-vg/ubuntu-lv
+
+   ### ⚙️ Splunk Enterprise Base Configuration
+Successfully configured the newly installed Splunk Enterprise instance on the Ubuntu Server (`my-splunk`) to automatically enable boot-start execution under the local `splunk` user account.
+
+![Splunk Boot Start Configuration](assets/splunk_enable_boot_start_configuration.png)
