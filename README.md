@@ -71,3 +71,50 @@ To establish an isolated orchestration environment, the underlying container run
    ```bash
    mkdir n8n-compose
    cd n8n-compose
+
+   # 🚀 Orchestration Execution & Storage Configuration
+
+Following the container configuration, the orchestration engine was successfully initialized. Critical storage permission structures were audited and modified to ensure the containerized environment could properly write persistent data to the host system.
+
+## 🔧 Troubleshooting & Syntax Adaptation
+
+Encountered a `command not found` error when attempting to use the legacy `docker-compose` binary. The issue was resolved by adapting to the modern Docker V2 plugin architecture, successfully pulling the required n8n image layers using the updated syntax.
+
+```bash
+sudo docker compose pull
+```
+
+## ▶️ Service Initialization
+
+Successfully executed the Docker Compose manifest to create the internal Docker network and start the n8n container in detached mode.
+
+```bash
+sudo docker compose up -d
+```
+
+## 🌐 Network & Firewall Verification
+
+Verified the host firewall configuration to ensure no local networking restrictions would interfere with container access. The Uncomplicated Firewall (UFW) was confirmed to be inactive, allowing unrestricted access to the exposed **port 5678**.
+
+```bash
+sudo ufw status
+```
+
+## 💾 Persistent Storage Permissions Fix
+
+Identified a permissions issue where the mapped `n8n_data/` volume was automatically created with **root ownership**, preventing the containerized **n8n** process from writing workflow data and the SQLite database.
+
+Resolved the issue by recursively assigning ownership of the directory to the standard container user (**UID:1000, GID:1000**).
+
+```bash
+sudo chown -R 1000:1000 n8n_data/
+```
+
+## ✅ Outcome
+
+* Successfully initialized the n8n orchestration environment.
+* Resolved Docker Compose version compatibility issues.
+* Verified host firewall settings for local accessibility.
+* Corrected persistent storage permissions for container write access.
+* Ensured reliable persistence of workflows and SQLite database across container restarts.
+
