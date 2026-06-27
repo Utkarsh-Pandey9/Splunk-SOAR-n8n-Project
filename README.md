@@ -72,7 +72,7 @@ To establish an isolated orchestration environment, the underlying container run
    mkdir n8n-compose
    cd n8n-compose
 
-   # 🚀 Orchestration Execution & Storage Configuration
+ # 🚀 Orchestration Execution & Storage Configuration
 
 Following the container configuration, the orchestration engine was successfully initialized. Critical storage permission structures were audited and modified to ensure the containerized environment could properly write persistent data to the host system.
 
@@ -92,6 +92,12 @@ Successfully executed the Docker Compose manifest to create the internal Docker 
 sudo docker compose up -d
 ```
 
+<p align="center">
+  <img src="assets/n8n_docker_compose_up_success.png" alt="Docker Compose started the n8n container successfully" width="800">
+</p>
+
+*Figure 1: Successful initialization of the n8n container using Docker Compose.*
+
 ## 🌐 Network & Firewall Verification
 
 Verified the host firewall configuration to ensure no local networking restrictions would interfere with container access. The Uncomplicated Firewall (UFW) was confirmed to be inactive, allowing unrestricted access to the exposed **port 5678**.
@@ -110,11 +116,21 @@ Resolved the issue by recursively assigning ownership of the directory to the st
 sudo chown -R 1000:1000 n8n_data/
 ```
 
+## 🌍 First Access to the n8n Web Interface
+
+After completing the configuration, the n8n web interface was successfully accessed through the browser using the exposed **port 5678**, confirming that the orchestration service was running correctly.
+
+<p align="center">
+  <img src="assets/n8n_web_ui_first_access.png" alt="First successful access to the n8n web interface" width="800">
+</p>
+
+*Figure 2: Successful first-time access to the n8n web interface.*
+
 ## ✅ Outcome
 
 * Successfully initialized the n8n orchestration environment.
 * Resolved Docker Compose version compatibility issues.
 * Verified host firewall settings for local accessibility.
 * Corrected persistent storage permissions for container write access.
-* Ensured reliable persistence of workflows and SQLite database across container restarts.
-
+* Successfully accessed the n8n web interface.
+* Ensured reliable persistence of workflows and the SQLite database across container restarts.
