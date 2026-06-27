@@ -55,3 +55,19 @@ During deployment, the Splunk indexing daemon halted search processes due to an 
 Successfully configured the newly installed Splunk Enterprise instance on the Ubuntu Server (`my-splunk`) to automatically enable boot-start execution under the local `splunk` user account.
 
 ![Splunk Boot Start Configuration](assets/splunk_enable_boot_start_configuration.png)
+
+---
+
+## 🚀 Phase 3: n8n Automation Engine Deployment via Docker
+
+Day 3 shifted focus toward deploying the orchestration and automation layer of the SOC infrastructure. The n8n automation engine was containerized to handle incident response playbooks and interact seamlessly with the existing SIEM telemetry.
+
+### 💻 Containerization & System Preparation
+
+To establish an isolated orchestration environment, the underlying container runtime was installed and workspace directories were structured:
+
+1. **Docker Engine Installation:** Deployed the core Docker package (`docker.io`) to manage container lifecycles natively on the Ubuntu host.
+2. **Workspace Initialization:** Created a dedicated operational directory to house configuration files and persistent data volumes:
+   ```bash
+   mkdir n8n-compose
+   cd n8n-compose
