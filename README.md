@@ -129,6 +129,14 @@ After completing the configuration, the n8n web interface was successfully acces
 ## ✅ Outcome
 
 * Successfully initialized the n8n orchestration environment.
+
+### 🚨 Threat Detection & Alert Engineering: Windows Brute-Force
+
+With the centralized logging pipeline and automation engine established, the final step within this phase was to engineer a proactive threat detection rule inside Splunk to feed into the SOAR pipeline.
+
+* **Query Construction:** Engineered a custom Splunk Search Processing Language (SPL) query specifically parsing the active telemetry for failed logon events using the correct field extraction:
+   ```spl
+   index="my-project" EventCode=4625
 * Resolved Docker Compose version compatibility issues.
 * Verified host firewall settings for local accessibility.
 * Corrected persistent storage permissions for container write access.
